@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <script>
+        function reflectMatrixVertical(matrix) {
+            var rows = matrix.length;
+            var columns = matrix[0].length;
+
+            // Перебрать половину, во избежания ошибочных перестановок
+            for (let i = 0; i < Math.floor(columns / 2); i++) {
+                // Поменять местами столбцы (i и columns - i - 1)
+                for (let j = 0; j < rows; j++) {
+                    [matrix[j][i], matrix[j][columns - i - 1]] = [matrix[j][columns - i - 1], matrix[j][i]];
+                }
+            }
+        }
+
+        // матрица
+        var inputMatrix = [
+            [1, 2, 3, 13, 100],
+            [4, 5, 6, 14, 120],
+            [7, 8, 9, 15, 140],
+            [10, 11, 12, 16, 200]
+        ];
+
+        // Вызвать функцию для отображения матрицы по вертикали
+        reflectMatrixVertical(inputMatrix);
+
+        // Отобразить матрицу
+        var resultParagraph = document.createElement('p');
+        resultParagraph.textContent = `Отзеркаленая матрица:\n[${inputMatrix.map(row => `[${row.join(', ')}]`).join(',\n')}]`;
+        document.body.appendChild(resultParagraph);
+    </script>
+</body>
+</html>
