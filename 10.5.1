@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <script>
+        function printMatrixColumns(matrix) {
+            var rows = matrix.length;
+            var columns = matrix[0].length;
+
+            // выбираем только столбцы с нечетными индексам
+            for (let col = 0; col < columns; col += 2) {
+                var columnElements = [];
+
+                // Собрать элементы данного столбца
+                for (let row = 0; row < rows; row++) {
+                    columnElements.push(matrix[row][col]);
+                }
+
+                // Вывести весь столбец
+                var resultParagraph = document.createElement('p');
+                resultParagraph.textContent = `Столбец ${col + 1}: [${columnElements.join(', ')}]`;
+                document.body.appendChild(resultParagraph);
+            }
+        }
+
+        var inputMatrix = [
+            [1, 2, 3, 14],
+            [4, 5, 6, 16],
+            [7, 8, 9, 18],
+            [10, 11, 12, 20]
+        ];
+
+        printMatrixColumns(inputMatrix);
+    </script>
+</body>
+</html>
